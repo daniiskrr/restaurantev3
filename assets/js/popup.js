@@ -1,4 +1,4 @@
-// Función para mostrar un popup dado su ID
+//Función para mostrar un popup dado su ID
 function mostrarPopup(id) {
     var popup = document.getElementById(id);
     popup.style.display = "block";
@@ -15,7 +15,7 @@ function mostrarPopup(id) {
   cerrarPopup2.addEventListener("click", function() {
     var popup = document.getElementById("popup-2");
     popup.style.display = "none";
-    localStorage.setItem("seMostroPopup2", true); // Agregar esta línea
+    localStorage.setItem("seMostroPopup2", true);
   });
   
   // Almacena el código de descuento en LocalStorage
@@ -24,26 +24,26 @@ function mostrarPopup(id) {
   // Si ya se ha mostrado el popup, no lo muestres de nuevo
   var seMostroPopup = localStorage.getItem("seMostroPopup");
   if (!seMostroPopup) {
-    // Espera 5 segundos antes de mostrar el primer popup
+    // Espera 10 segundos antes de mostrar el primer popup
     setTimeout(function() {
       mostrarPopup("popup-1");
-    }, 5000);
+    }, 10000);
   
     localStorage.setItem("seMostroPopup", true);
   }
   
-  // Definir la variable seMostroPopup2
+  //Definir la variable seMostroPopup2
   var seMostroPopup2 = localStorage.getItem("seMostroPopup2");
   
   if (!seMostroPopup2) {
-    // Espera 30 segundos antes de mostrar el segundo popup
+    //Espera 30 segundos antes de mostrar el segundo popup
     setTimeout(function() {
-      // Si el ratón se aleja de la ventana del navegador, muestra el popup
+      //Si el ratón se aleja de la ventana del navegador, muestra el popup
       window.addEventListener("mouseout", function mostrarPopup2(event) {
         if (event.clientY < 0) {
           mostrarPopup("popup-2");
           localStorage.setItem("seMostroPopup2", true);
-          // Elimina el eventListener para que no se siga ejecutando después de mostrarse el popup
+          //Elimina el eventListener para que no se siga ejecutando después de mostrarse el popup
           window.removeEventListener("mouseout", mostrarPopup2);
         }
       });
